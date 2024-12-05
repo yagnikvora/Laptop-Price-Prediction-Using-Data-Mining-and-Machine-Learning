@@ -40,7 +40,7 @@ cpu = st.selectbox('CPU Brand',df['Cpu Barnd'].unique())
 hdd = st.selectbox('HDD(in GBs)',[0,128,256,512,1024,2048])
 
 #SSD
-ssd = st.selectbox('ssd(in GBs)',[0,128,256,512,1024])
+ssd = st.selectbox('SSD(in GBs)',[0,128,256,512,1024])
 
 #GPU
 gpu = st.selectbox('GPU Brand',df['Gpu Brand'].unique())
@@ -67,6 +67,6 @@ if st.button('Predict the price'):
         query = np.array([compony,type,ram,weight,touchscreen,ips,ppi,cpu,hdd,ssd,gpu,os])
 
         query = query.reshape(1,12)
-        st.title("Price of Laptop is : "+str(int(np.exp(pipe.predict(query))[0])))
+        st.title("Price of Laptop is : ₹ "+str(int(np.exp(pipe.predict(query))[0])))
     except ZeroDivisionError:
         st.title("Please enter all data")
